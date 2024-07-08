@@ -7,7 +7,7 @@ namespace GrpcClient
     {
         static async Task Main(string[] args)
         {
-            using var channel = GrpcChannel.ForAddress("http://localhost:5162");
+            var channel = GrpcChannel.ForAddress("http://localhost:5162");
             var client = new MessageService.MessageServiceClient(channel);
 
             var reply = await client.SendMessageAsync(new GrpcServer.MessageRequest { Message = "Hello, Server!" });
